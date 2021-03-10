@@ -42,7 +42,7 @@ library Pairing {
             return G1Point(0, 0);
         return G1Point(p.X, q - (p.Y % q));
     }
-    /// @return the sum of two points of G1
+    /// @return r the sum of two points of G1
     function addition(G1Point memory p1, G1Point memory p2)  internal view returns (G1Point memory r) {
         uint[4] memory input;
         input[0] = p1.X;
@@ -58,7 +58,7 @@ library Pairing {
         }
         require(success,"pairing-add-failed");
     }
-    /// @return the product of a point on G1 and a scalar, i.e.
+    /// @return r the product of a point on G1 and a scalar, i.e.
     /// p == p.scalar_mul(1) and p.addition(p) == p.scalar_mul(2) for all points p.
     function scalar_mul(G1Point memory p, uint s) internal view returns (G1Point memory r) {
         uint[3] memory input;
